@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: nts-user-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/nts?useSSL=false\
+        &allowPublicKeyRetrieval=true\
+        &createDatabaseIfNotExist=true\
+        &connectionCollation=utf8mb4_0900_ai_ci"
+    username: root
+    password:
+  flyway:
+    locations: classpath:db/migration
+    enabled: true
+    baseline-on-migrate: true
+    clean-disabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8765/eureka/
+
+  instance:
+    preferIpAddress: true
+    instanceId: localhost:${server.port}
+
+  logging:
+    level:
+      root: debug
+
+server:
+  port: 8061
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+
+swagger-ui:
+  swagger-ui:
+    path: /swagger-ui.html
